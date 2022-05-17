@@ -1,0 +1,19 @@
+{
+  "name": "clone-netfix",
+  "version": "1.0.0",
+  "description": "Consumo de API: The movie database API",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stiven45ruiz/clone-netfix.git"
+  },
+  "author": "@stiven45ruiz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stiven45ruiz/clone-netfix/issues"
+  },
+  "homepage": "https://github.com/stiven45ruiz/clone-netfix#readme"
+}
