@@ -14,13 +14,10 @@ const API_URL_GENRE = '/genre/movie/list';
 const API_URL_BYCATEGORY = 'discover/movie';
 const BASE_URL_IMG = 'https://image.tmdb.org/t/p/w300';
 
-const getTrendingMoviesPreview = async() =>{
-    const {data} = await api(`${API_URL_TRENDING}`);
+// HELPERS OR UTILS
+const createMovies = (movies, container)=>{
+    container.innerHTML = ''
 
-    const movies = data.results;
-    console.log(data, movies);
-
-    trendingMoviesPreviewList.innerHTML = '';
     movies.forEach(movie => {
         
         const movieContainer = document.createElement('div');
@@ -33,16 +30,12 @@ const getTrendingMoviesPreview = async() =>{
 
 
         movieContainer.appendChild(movieImg);
-        trendingMoviesPreviewList.appendChild(movieContainer);
+        container.appendChild(movieContainer);
     });
 }
 
-const getCategoriesPreview = async() =>{
-    const {data} = await api(`${API_URL_GENRE}`);
-    
-    const categories = data.genres;
-    console.log(data, categories);
-    categoriesPreviewList.innerHTML = '';
+const createCategories =(categories,  container) =>{
+    container.innerHTML = '';
 
     categories.forEach(category => {
 
@@ -59,8 +52,31 @@ const getCategoriesPreview = async() =>{
 
         categoryTitle.appendChild(categoryTitleText);
         categoryContainer.appendChild(categoryTitle);
-        categoriesPreviewList.appendChild(categoryContainer);
+        container.appendChild(categoryContainer);
     });
+}
+
+
+//CALLS TO API
+
+const getTrendingMoviesPreview = async() =>{
+    const {data} = await api(`${API_URL_TRENDING}`);
+
+    const movies = data.results;
+    //console.log(data, movies);
+
+    createMovies(movies, trendingMoviesPreviewList)
+    
+}
+
+const getCategoriesPreview = async() =>{
+    const {data} = await api(`${API_URL_GENRE}`);
+    
+    const categories = data.genres;
+    console.log(data, categories);
+
+    createCategories(categories, categoriesPreviewList)
+    
 }
 
 const getMoviesByCategory = async(id) =>{
@@ -69,24 +85,9 @@ const getMoviesByCategory = async(id) =>{
             with_genres: id,
         }
     });
-
-
     const movies = data.results;
-    console.log(data, movies);
+    // console.log(data, movies);
 
-    genericSection.innerHTML = '';
-    movies.forEach(movie => {
-        
-        const movieContainer = document.createElement('div');
-        movieContainer.classList.add('movie-container');
-
-        const movieImg = document.createElement('img');
-        movieImg.classList.add('movie-img');
-        movieImg.setAttribute('alt', movie.title);
-        movieImg.setAttribute('src', `${BASE_URL_IMG}${movie.poster_path}`);
-
-
-        movieContainer.appendChild(movieImg);
-        genericSection.appendChild(movieContainer);
-    });
+    createMovies( movies, genericSection)
+    
 }
