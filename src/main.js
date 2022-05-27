@@ -8,11 +8,13 @@ const api = axios.create({
     },
 });
 
-const API_URL = 'https://api.themoviedb.org/3';
-const API_URL_TRENDING = '/trending/movie/day';
-const API_URL_GENRE = '/genre/movie/list';
+const API_URL = 'https://api.themoviedb.org/3/';
+const API_URL_TRENDING = 'trending/movie/day';
+const API_URL_GENRE = 'genre/movie/list';
 const API_URL_BYCATEGORY = 'discover/movie';
+const API_URL_SEARCH = 'search/movie'
 const BASE_URL_IMG = 'https://image.tmdb.org/t/p/w300';
+const BASE_URL_IMG_LARGE = 'https://image.tmdb.org/t/p/w500';
 
 // HELPERS OR UTILS
 const createMovies = (movies, container)=>{
@@ -22,6 +24,9 @@ const createMovies = (movies, container)=>{
         
         const movieContainer = document.createElement('div');
         movieContainer.classList.add('movie-container');
+        movieContainer.addEventListener('click', ()=>{
+            location.hash = '#movie=' + movie.id
+        })
 
         const movieImg = document.createElement('img');
         movieImg.classList.add('movie-img');
@@ -90,4 +95,51 @@ const getMoviesByCategory = async(id) =>{
 
     createMovies( movies, genericSection)
     
+}
+
+const getMoviesBySearch = async(query) =>{
+    const {data} = await api(`${API_URL_SEARCH}`,{
+        params:{
+            query,
+        }
+    });
+    const movies = data.results;
+    // console.log(data, movies);
+
+    createMovies( movies, genericSection)
+    
+}
+const getTrendingMovies = async() =>{
+    const {data} = await api(`${API_URL_TRENDING}`);
+
+    const movies = data.results;
+    //console.log(data, movies);
+
+    createMovies(movies, genericSection)
+    
+}
+const getMovieById = async(id) =>{
+    const {data: movie} = await api(`movie/${id}`);
+
+    const movieImgUrl = BASE_URL_IMG_LARGE + movie.poster_path;
+
+    headerSection.style.background = `
+        linear-gradient(180deg, rgba(0, 0, 0, 0.35) 19.27%, rgba(0, 0, 0, 0) 29.17%),
+        url(${movieImgUrl})
+    `;
+
+    movieDetailTitle.textContent = movie.title;
+    movieDetailDescription.textContent =  movie.overview;
+    movieDetailScore.textContent = movie.vote_average;
+    
+    createCategories(movie.genres, movieDetailCategoriesList);
+    relatedMoviesId(id);
+}
+
+const relatedMoviesId = async(id) =>{
+    const {data} = await api(`movie/${id}/recommendations`)
+
+    const relatedMovies = data.results;
+
+    createMovies(relatedMovies, relatedMoviesContainer)
 }
