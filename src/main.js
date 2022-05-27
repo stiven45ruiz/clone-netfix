@@ -156,7 +156,7 @@ const recommendedMoviesId = async(id) =>{
 }
 
 const whatch = async(id) =>{
-    const {data} = await api(`/movie/${id}/videos`)
+    const {data} = await api(`movie/${id}/watch//providers`)
     const view = data.results;
     console.log(view);
 }
