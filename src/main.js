@@ -65,7 +65,7 @@ const createCategories =(categories,  container) =>{
 //CALLS TO API
 
 const getTrendingMoviesPreview = async() =>{
-    const {data} = await api(`${API_URL_TRENDING}`);
+    const {data} = await api(`${API_URL_TRENDING}?limit=5`);
 
     const movies = data.results;
     //console.log(data, movies);
@@ -122,24 +122,41 @@ const getMovieById = async(id) =>{
     const {data: movie} = await api(`movie/${id}`);
 
     const movieImgUrl = BASE_URL_IMG_LARGE + movie.poster_path;
-
+    console.log(movie)
     headerSection.style.background = `
         linear-gradient(180deg, rgba(0, 0, 0, 0.35) 19.27%, rgba(0, 0, 0, 0) 29.17%),
         url(${movieImgUrl})
     `;
 
     movieDetailTitle.textContent = movie.title;
-    movieDetailDescription.textContent =  movie.overview;
     movieDetailScore.textContent = movie.vote_average;
+    movieDetailDescription.textContent =  movie.overview;
+    movieDetailPremiere.textContent = movie.release_date;
+    
+    
     
     createCategories(movie.genres, movieDetailCategoriesList);
     relatedMoviesId(id);
+    recommendedMoviesId(id);
+    whatch(id)
 }
 
 const relatedMoviesId = async(id) =>{
-    const {data} = await api(`movie/${id}/recommendations`)
+    const {data} = await api(`movie/${id}/similar`)
 
     const relatedMovies = data.results;
 
     createMovies(relatedMovies, relatedMoviesContainer)
+}
+const recommendedMoviesId = async(id) =>{
+    const {data} = await api(`movie/${id}/recommendations`);
+    const recommendedMovies = data.results;
+
+    createMovies(recommendedMovies, recommendedMoviesContainer)
+}
+
+const whatch = async(id) =>{
+    const {data} = await api(`/movie/${id}/videos`)
+    const view = data.results;
+    console.log(view);
 }

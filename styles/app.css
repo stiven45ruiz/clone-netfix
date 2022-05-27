@@ -2,13 +2,25 @@
 * { box-sizing: border-box; }
 
 :root {
-  --purple-light-1: #FBFAFB;
-  --purple-light-2: #EEEAF2;
-  --purple-medium-1: #AA83C8;
-  --purple-medium-2: #8B48BF;
-  --purple-medium-3: #5C218A;
-  --purple-dark-1: #3E0F64;
-  --purple-dark-2: #2A0646;
+  --color-light-0: #fff;
+  --color-light-1: #2f0d46ec; /* fallback for old browsers */
+  --gradient-webkit: -webkit-linear-gradient(to bottom,  #03001e,#7303c0, #aa2988, #7303c0, #03001e);  /* Chrome 10-25, Safari 5.1-6 */
+  --gradient-linear: linear-gradient(to bottom, #03001e, #7303c0, #aa2988, #7303c0, #03001e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+  --color-light-2: #636B97;
+  --color-medium-1: #9D6F6F;
+  --color-medium-2: #4C4451;
+  --color-medium-3: #03001e;
+  --color-dark-1: #162853;
+  --color-dark-2: #02030E;
+
+  /* .color1 {color: #00385d;}
+.color2 {color: #00385d;}
+.color3 {color: #7861a9;}
+.color4 {color: #d280d8;}
+.color5 {color: #ffa7ff;} */
 
   --yellow: #EECC75;
   --green: #CAD297;
@@ -16,6 +28,11 @@
   --lightBlue: #A2EEE5;
   --darkBlue: #8EA2EA;
   --red: #F09D9D;
+  --blue: #164EBA;
+  --bluecomp:#395387;
+  --blueComp2: #05CEED;
+  --orangeComp3: #EF7541;
+  --orangeComp4: #BA2F16;
 
   --font-family-titles: 'Dosis', sans-serif;
   --font-family-text: 'Red Hat Display', sans-serif;
@@ -26,12 +43,14 @@
 }
 
 html {
-  background-color: var(--purple-medium-3);
+  background-color: var(--color-medium-3);
 }
 
 body {
-  background-color: var(--purple-light-1);
-  color: var(--purple-dark-2);
+  background: var(--color-light-1);
+  background: var(--gradient-webkit);
+  background: var(--gradient-linear);
+  color: var(--color-dark-2);
   font-family: var(--font-family-text);
   font-weight: var(--font-weight-text1);
   font-size: 16px;
@@ -46,7 +65,7 @@ h1, h2, h3 {
 
 h1, h2 {
   font-size: 24px;
-  color: var(--purple-dark-2);
+  color: var(--color-dark-2);
   font-family: var(--font-family-titles);
   font-weight: var(--font-weight-title1);
   margin: 0;
@@ -55,33 +74,33 @@ h1, h2 {
 
 h2 {
   font-size: 18px;
-  color: var(--purple-dark-1);
+  color: var(--color-light-0);
   font-weight: var(--font-weight-title2);
 }
 
 h3 {
-  color: var(--purple-dark-2);
+  color: var(--color-light-0);
   font-weight: var(--font-weight-text2);
   font-size: 16px;
 }
 
 input {
-  background-color: var(--purple-light-2);
-  color: var(--purple-medium-2);
+  background-color: var(--color-light-2);
+  color: var(--color-light-0);
   border: none;
   font-size: 18px;
   padding-left: 16px;
 }
 
 input::placeholder {
-  color: var(--purple-medium-1);
+  color: var(--color-medium-1);
   font-family: var(--font-family-text);
 }
 
 button {
-  background-color: var(--purple-dark-1);
+  background-color: var(--color-dark-1);
   border: none;
-  color: var(--purple-light-2);
+  color: var(--color-light-2);
   font-weight: var(--font-weight-text2);
   font-size: 14px;
   cursor: pointer;
@@ -120,14 +139,14 @@ button {
 
 /* Header */
 .header-container {
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
 .header-container--long {
   background-image: url('https://pics.filmaffinity.com/Deadpool-777527803-large.jpg');
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 19.27%, rgba(0, 0, 0, 0) 29.17%), url(https://pics.filmaffinity.com/Deadpool-777527803-large.jpg);
   background-size: cover !important;
-  height: 480px;
+  height: 550px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -139,6 +158,7 @@ button {
 
 .header-title {
   text-align: center;
+  color: var(--color-light-0);
   /* margin-bottom: 16px;
   margin-left: 40px;
   margin-top: 10px; */
@@ -147,7 +167,7 @@ button {
 .header-arrow {
   position: fixed;
   font-weight: var(--font-weight-text2);
-  background-color: var(--purple-light-2);
+  background-color: var(--color-light-0);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -159,7 +179,7 @@ button {
   justify-content: center;
 }
 .header-arrow--white {
-  color: var(--purple-light-1);
+  color: var(--color-dark-1);
 }
 
 .header-searchForm {
@@ -168,6 +188,7 @@ button {
   justify-content: center;
   width: 100%;
   flex-wrap: nowrap;
+  margin-top: 50px;
 }
 
 .header-searchForm input {
@@ -195,6 +216,7 @@ button {
   border-radius: 8px;
   height: 32px;
   width: 72px;
+  color: var(--color-light-0);
 }
 
 .trendingPreview-movieList {
@@ -219,7 +241,18 @@ button {
   min-width: 150px;
   max-width: 150px;
 }
-
+.movie-container {
+  display: inline-block;
+  margin-right: 8px;
+}
+.movie-container .movie-img {
+  height: 225px;
+  min-height: 225px;
+  max-height: 225px;
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+}
 
 /* Categories */
 .category-container {
@@ -249,16 +282,16 @@ button {
 #id16 { --idColor: var(--green); }
 #id35 { --idColor: var(--lightBlue); }
 #id80 { --idColor: var(--darkBlue); }
-#id99 { --idColor: var(--purple-dark-1); }
-#id18 { --idColor: var(--purple-medium-1); }
-#id10751 { --idColor: var(--yellow); }
+#id99 { --idColor: var(--color-dark-1); }
+#id18 { --idColor: var(--color-medium-1); }
+#id10751 { --idColor: var(--blue); }
 #id14 { --idColor: var(--red); }
-#id36 { --idColor: var(--green); }
-#id27 { --idColor: var(--lightBlue); }
+#id36 { --idColor: var(--orangeComp4); }
+#id27 { --idColor: var(--bluecomp); }
 #id10402 { --idColor: var(--darkBlue); }
-#id9648 { --idColor: var(--purple-dark-1); }
-#id10749 { --idColor: var(--purple-medium-1); }
-#id878 { --idColor: var(--yellow); }
+#id9648 { --idColor: var(--color-dark-1); }
+#id10749 { --idColor: var(--color-medium-1); }
+#id878 { --idColor: var(--orangeComp3); }
 #id10770 { --idColor: var(--red); }
 #id53 { --idColor: var(--green); }
 #id10752 { --idColor: var(--lightBlue); }
@@ -292,7 +325,9 @@ button {
   margin-top: 403px;
   z-index: 1;
   position: absolute;
-  background-color: var(--purple-light-1);
+  color: var(--color-light-0);
+  background-color: var(--color-light-1);
+  background: var(--gradient-linear);
 }
 
 .movieDetail-title {
@@ -300,6 +335,7 @@ button {
   width: 80%;
   margin: 0 0 16px 0;
   padding: 0;
+  color: var(--color-light-0);
 }
 
 .movieDetail-score {
@@ -319,7 +355,11 @@ button {
 }
 
 .relatedmovies-container {
-  margin-top: 24px;
+  margin-top: 20px;
+  height: 216px;
+}
+.recommendedmovie-container{
+  margin-top: 80px;
   height: 216px;
 }
 
@@ -327,7 +367,15 @@ button {
   margin-bottom: 16px;
 }
 
-.relatedmovies-scrollcontainer {
+.relatedmovies-scrollcontainer{
+  position: absolute;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width: calc(100vw - 24px);
+  padding-bottom: 16px;
+}
+.recommendedmovie-scrollcontainer{
   position: absolute;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -353,8 +401,8 @@ button {
 
 /* Footer */
 footer {
-  background-color: var(--purple-medium-3);
-  color: var(--purple-light-2);
+  background-color: var(--color-medium-3);
+  color: var(--color-light-2);
   text-align: center;
   height: 48px;
   display: flex;
@@ -366,4 +414,8 @@ footer {
 /* Navigation */
 .inactive {
   display: none;
+}
+
+.inputSearchMargin{
+  margin-top: 70px;
 }
