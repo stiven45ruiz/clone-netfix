@@ -4,8 +4,8 @@
 :root {
   --color-light-0: #fff;
   --color-light-1: #2f0d46ec; /* fallback for old browsers */
-  --gradient-webkit: -webkit-linear-gradient(to bottom,  #03001e,#7303c0, #aa2988, #7303c0, #03001e);  /* Chrome 10-25, Safari 5.1-6 */
-  --gradient-linear: linear-gradient(to bottom, #03001e, #7303c0, #aa2988, #7303c0, #03001e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  --gradient-webkit: -webkit-linear-gradient(to bottom,  #03001ec0,#7403c0b9, #aa2988cc, #7403c0cb, #03001ec4);  /* Chrome 10-25, Safari 5.1-6 */
+  --gradient-linear: linear-gradient(to bottom, #03001ea4, #7403c0b6, #aa2988bb, #7403c0be, #03001ec2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
 
@@ -143,7 +143,7 @@ button {
 }
 
 .header-container--long {
-  background-image: url('https://pics.filmaffinity.com/Deadpool-777527803-large.jpg');
+  /* background-image: url('https://pics.filmaffinity.com/Deadpool-777527803-large.jpg'); */
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 19.27%, rgba(0, 0, 0, 0) 29.17%), url(https://pics.filmaffinity.com/Deadpool-777527803-large.jpg);
   background-size: cover !important;
   height: 550px;
@@ -406,13 +406,13 @@ button {
   max-width: 150px;
 
   border-radius: 10px;
-  
+  margin-bottom: 5px;
 
   background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.11) 0px, #c47bb7 40px, rgba(255, 255, 255, 0.11) 80px);
   
   background-color: rgba(221, 221, 221, 0);
-  animation: shine-avatar 1.6s infinite linear;
-  animation: shine-lines 1.6s infinite linear;
+  animation: shine-avatar 1.6s infinite alternate;
+  animation: shine-lines 1.6s infinite alternate;
 }
 
 .skeleton-category{
@@ -422,8 +422,8 @@ button {
   background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.11) 0px, #c47bb7 40px, rgba(255, 255, 255, 0.11) 80px);
   
   background-color: rgba(221, 221, 221, 0);
-  animation: shine-avatar 1.6s infinite linear;
-  animation: shine-lines 1.6s infinite linear;
+  animation: shine-avatar 1.6s infinite alternate;
+  animation: shine-lines 1.6s infinite alternate;
 }
 
 
@@ -453,8 +453,11 @@ footer {
   0%{
     background-position: -100px
   }
-  40%, 100%{
-  background-position: 140px
+  40%{
+    background-position: 10px
+  }
+  100%{
+    background-position: 150px
   }
 }
  
@@ -465,7 +468,10 @@ footer {
   0%{
     background-position: -100px + 52 + 16
   }
-  40%, 100%{
+  40%{
+    background-position: 10px + 52 + 16
+  } 
+  100%{
     background-position: 150px + 52 + 16
   }
 }
@@ -473,7 +479,10 @@ footer {
   0%{
     background-position: -100px + 52 + 16
   }
-  40%, 100%{
+  40%{
+    background-position: 10px + 52 + 16
+  } 
+  100%{
     background-position: 150px + 52 + 16
   }
 }

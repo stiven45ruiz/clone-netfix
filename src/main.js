@@ -37,6 +37,7 @@ const createMovies = (movies, container)=>{
         movieContainer.appendChild(movieImg);
         container.appendChild(movieContainer);
     });
+    
 }
 
 const createCategories =(categories,  container) =>{
@@ -59,6 +60,7 @@ const createCategories =(categories,  container) =>{
         categoryContainer.appendChild(categoryTitle);
         container.appendChild(categoryContainer);
     });
+    smoothscroll()
 }
 
 
@@ -123,11 +125,12 @@ const getMovieById = async(id) =>{
 
     const movieImgUrl = BASE_URL_IMG_LARGE + movie.poster_path;
     console.log(movie)
+    
     headerSection.style.background = `
         linear-gradient(180deg, rgba(0, 0, 0, 0.35) 19.27%, rgba(0, 0, 0, 0) 29.17%),
         url(${movieImgUrl})
     `;
-
+    
     movieDetailTitle.textContent = movie.title;
     movieDetailScore.textContent = movie.vote_average;
     movieDetailDescription.textContent =  movie.overview;
