@@ -17,7 +17,21 @@ const BASE_URL_IMG = 'https://image.tmdb.org/t/p/w300';
 const BASE_URL_IMG_LARGE = 'https://image.tmdb.org/t/p/w500';
 
 // HELPERS OR UTILS
-const createMovies = (movies, container)=>{
+
+const lazyLoader = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+        // console.log(entry)
+
+        if(entry.isIntersecting){
+            const url = entry.target.getAttribute('data-src')
+            entry.target.setAttribute('src', url)
+        }
+    })
+});
+
+
+
+const createMovies = (movies, container, lazyLoad = true)=>{
     container.innerHTML = ''
 
     movies.forEach(movie => {
@@ -26,13 +40,26 @@ const createMovies = (movies, container)=>{
         movieContainer.classList.add('movie-container');
         movieContainer.addEventListener('click', ()=>{
             location.hash = '#movie=' + movie.id
-        })
+        });
 
         const movieImg = document.createElement('img');
         movieImg.classList.add('movie-img');
         movieImg.setAttribute('alt', movie.title);
-        movieImg.setAttribute('src', `${BASE_URL_IMG}${movie.poster_path}`);
+        movieImg.setAttribute(
+            lazyLoad ? 'data-src': 'src', 
+            `${BASE_URL_IMG}${movie.poster_path}`
+        );
+        
+        movieImg.addEventListener('error', () => {
+            movieImg.setAttribute(
+                'src', 
+                'https://www.sinrumbofijo.com/wp-content/uploads/2016/05/default-placeholder.png'
+            )
+        });
 
+        if(lazyLoad){
+            lazyLoader.observe(movieImg);
+        };
 
         movieContainer.appendChild(movieImg);
         container.appendChild(movieContainer);
@@ -72,7 +99,7 @@ const getTrendingMoviesPreview = async() =>{
     const movies = data.results;
     //console.log(data, movies);
 
-    createMovies(movies, trendingMoviesPreviewList)
+    createMovies(movies, trendingMoviesPreviewList, true)
     
 }
 
