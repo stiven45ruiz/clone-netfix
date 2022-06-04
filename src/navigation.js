@@ -1,3 +1,4 @@
+let maxPage;
 let page = 1;
 let infinityScroll;
 
@@ -98,6 +99,8 @@ function categoriePage(){
     // document.body.scrollTop = 0; // For Safari
     // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     getMoviesByCategory(categoryId);
+
+    infinityScroll = getPaginatedMoviesByCategory(categoryId)
 }
 function movieDetailsPage(){
     console.log('MOVIES!!')
@@ -138,6 +141,8 @@ function searchPage(){
     const [_, query] = location.hash.split('=');
     console.log(query)
     getMoviesBySearch(query)
+
+    infinityScroll = getPaginatedMoviesBySearch(query);
 }
 function trendsPage(){
     console.log('TRENDS!!')
