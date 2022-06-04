@@ -31,8 +31,19 @@ const lazyLoader = new IntersectionObserver((entries)=>{
 
 
 
-const createMovies = (movies, container, lazyLoad = true)=>{
-    container.innerHTML = ''
+const createMovies = (
+    movies, 
+    container, 
+    {
+        lazyLoad = true,
+        clean = true,
+    } = {}
+    )=>{
+    if (clean){
+        container.innerHTML = ''
+    }
+    
+    
 
     movies.forEach(movie => {
         
@@ -144,9 +155,45 @@ const getTrendingMovies = async() =>{
     const movies = data.results;
     //console.log(data, movies);
 
-    createMovies(movies, genericSection)
+    createMovies(movies, genericSection, {clean: true})
+
+    // const btnloadMore = document.createElement('button');
+    // btnloadMore.innerText = 'Cargar más';
+    // btnloadMore.addEventListener('click', getPaginatedTrendingMovies)
+    // genericSection.appendChild(btnloadMore)
     
 }
+
+
+const getPaginatedTrendingMovies = async() =>{
+
+    const { 
+        scrollTop, 
+        scrollHeight, 
+        clientHeight 
+    } = document.documentElement;
+    const scrollIsBottom = (scrollTop + clientHeight) >= (scrollHeight - 10)
+    if(scrollIsBottom){
+        page++;
+        const {data} = await api(`${API_URL_TRENDING}`,{
+            params:{
+                page,
+            },
+        });
+
+        const movies = data.results;
+        //console.log(data, movies);
+
+        createMovies(movies, genericSection, {clean: false})
+    }
+
+    // const btnloadMore = document.createElement('button');
+    // btnloadMore.innerText = 'Cargar más';
+    // btnloadMore.addEventListener('click', getPaginatedTrendingMovies)
+    // genericSection.appendChild(btnloadMore)
+}
+
+
 const getMovieById = async(id) =>{
     const {data: movie} = await api(`movie/${id}`);
 
