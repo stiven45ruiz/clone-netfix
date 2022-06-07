@@ -36,7 +36,12 @@ const likeMovie = (movie)=>{
 
     localStorage.setItem('liked_movies',JSON.stringify(likedMovies))
 
-    window.location.reload()
+    //window.location.reload()
+
+    if (location.hash == ''){
+        getLikedMovies();
+        getTrendingMoviesPreview(); 
+  }
 }
 
 const API_URL = 'https://api.themoviedb.org/3/';
