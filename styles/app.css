@@ -147,7 +147,10 @@ button {
 .movie-btn--liked::before{
   content: '💜';
 }
-
+.icon-search:hover{
+  color: white;
+  
+}
 .categoriesPreview-list, .categories-list {
   display: flex;
   align-items: center;
@@ -237,7 +240,6 @@ button {
 .trendingPreview-btn {
   border-radius: 8px;
   height: 32px;
-  width: 72px;
   color: var(--color-light-0);
 }
 

@@ -1,4 +1,5 @@
 //DATA
+const leng = window.navigator.language.split('-')[0]
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3',
     headers: {
@@ -6,6 +7,7 @@ const api = axios.create({
     },
     params:{
         'api_key': API_KEY,
+        'language': leng
     },
 });
 

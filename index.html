@@ -5,6 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@700;800&family=Red+Hat+Display:wght@400;500&display=swap" rel="stylesheet" />
@@ -20,14 +22,18 @@
 
     <form id="searchForm" class="header-searchForm">
       <input type="text" placeholder="Vengadores" />
-      <button id="searchBtn">🔍</button>
+      <button id="searchBtn" class="icon-search">
+        <span class=" material-symbols-outlined">
+          search
+        </span>
+      </button>
     </form>
   </header>
 
   <section id="trendingPreview" class="trendingPreview-container">
     <div class="trendingPreview-header">
-      <h2 class="trendingPreview-title">Tendencias</h2>
-      <button class="trendingPreview-btn">Ver más</button>
+      <h2 class="trendingPreview-title">Trends</h2>
+      <button class="trendingPreview-btn">See More</button>
     </div>
 
     <article class="trendingPreview-movieList">
@@ -68,7 +74,7 @@
   </section>
 
   <section id="categoriesPreview" class="categoriesPreview-container">
-    <h2 class="categoriesPreview-title">Categorías</h2>
+    <h2 class="categoriesPreview-title">Categories</h2>
 
     <article class="categoriesPreview-list">
       <div class="category-container skeleton-category">
@@ -91,7 +97,7 @@
 
   <section id="liked" class="liked-container">
     <div class="liked-header">
-       <h2 class="liked-title">Películas favoritas</h2>
+       <h2 class="liked-title">Favorite Movies</h2>
     </div>
     <article class="liked-movielist">
       <div class="movie-container skeleton box">
@@ -143,17 +149,17 @@
   </section>
 
   <section id="movieDetail" class="movieDetail-container inactive">
-    <h1 class="movieDetail-title">Espera...</h1>
+    <h1 class="movieDetail-title">Wait...</h1>
     <span class="movieDetail-score">0.0</span>
     
     <article>
       <p class="movieDetail-description">
-        Aqui estara la descripcion de la pelicula... Ten paciencia.
+        Here will be the description of the movie... Be patient.
       </p>
       <p >
         <strong>Premiere: </strong> <span class="movieDetail-premiere"></span>
       </p>
-      <a href=""> Ver
+      <a href=""> Watch
         <img class="movieDetail-link" src="" alt="">
       </a>
     </article>
@@ -254,7 +260,7 @@
     </article>
   </section>
 
-  <footer>Hecho con ❤ por @stiven45ruiz</footer>
+  <footer>Made with ❤ by @stiven45ruiz</footer>
   
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./src/secretkey.js"></script>
