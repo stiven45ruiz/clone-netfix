@@ -17,6 +17,20 @@ window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
 window.addEventListener('scroll', infinityScroll, {passive:false});
 
+window.addEventListener('storage', () => {
+    // When local storage changes, dump the list to
+    // the console.
+    console.log('addEvent')
+    console.log(JSON.parse(localStorage.getItem('sampleList')));
+    
+});
+
+window.onstorage = () => {
+    // When local storage changes, dump the list to
+    // the console.
+    console.log('onstorage')
+    console.log(JSON.parse(localStorage.getItem('sampleList')));
+  };
 
 function smoothscroll(){
     const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
@@ -67,6 +81,7 @@ function homePage(){
 
     trendingPreviewSection.classList.remove('inactive')
     categoriesPreviewSection.classList.remove('inactive')
+    likedMoviesSection.classList.remove('inactive')
     genericSection.classList.add('inactive')
     movieDetailSection.classList.add('inactive')
 
@@ -74,6 +89,7 @@ function homePage(){
 
     getTrendingMoviesPreview()
     getCategoriesPreview()
+    getLikedMovies()
 }
 function categoriePage(){
     console.log('CATEGORIES!!')
@@ -88,6 +104,7 @@ function categoriePage(){
 
     trendingPreviewSection.classList.add('inactive')
     categoriesPreviewSection.classList.add('inactive')
+    likedMoviesSection.classList.add('inactive')
     genericSection.classList.remove('inactive')
     movieDetailSection.classList.add('inactive')
 
@@ -115,6 +132,7 @@ function movieDetailsPage(){
 
     trendingPreviewSection.classList.add('inactive')
     categoriesPreviewSection.classList.add('inactive')
+    likedMoviesSection.classList.add('inactive')
     genericSection.classList.add('inactive')
     movieDetailSection.classList.remove('inactive')
 
@@ -134,6 +152,7 @@ function searchPage(){
 
     trendingPreviewSection.classList.add('inactive');
     categoriesPreviewSection.classList.add('inactive');
+    likedMoviesSection.classList.add('inactive')
     genericSection.classList.remove('inactive');
     movieDetailSection.classList.add('inactive');
 
