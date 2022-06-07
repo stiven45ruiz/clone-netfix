@@ -17,20 +17,20 @@ window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
 window.addEventListener('scroll', infinityScroll, {passive:false});
 
-window.addEventListener('storage', () => {
-    // When local storage changes, dump the list to
-    // the console.
-    console.log('addEvent')
-    console.log(JSON.parse(localStorage.getItem('sampleList')));
+// window.addEventListener('storage', () => {
+//     // When local storage changes, dump the list to
+//     // the console.
+//     console.log('addEvent')
+//     console.log(JSON.parse(localStorage.getItem('sampleList')));
     
-});
+// });
 
-window.onstorage = () => {
-    // When local storage changes, dump the list to
-    // the console.
-    console.log('onstorage')
-    console.log(JSON.parse(localStorage.getItem('sampleList')));
-  };
+// window.onstorage = () => {
+//     // When local storage changes, dump the list to
+//     // the console.
+//     console.log('onstorage')
+//     console.log(JSON.parse(localStorage.getItem('sampleList')));
+//   };
 
 function smoothscroll(){
     const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
@@ -176,6 +176,7 @@ function trendsPage(){
 
     trendingPreviewSection.classList.add('inactive')
     categoriesPreviewSection.classList.add('inactive')
+    likedMoviesSection.classList.add('inactive')
     genericSection.classList.remove('inactive')
     movieDetailSection.classList.add('inactive')
 
