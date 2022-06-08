@@ -98,7 +98,7 @@ input::placeholder {
 }
 
 button {
-  background-color: var(--color-dark-1);
+  background-color: var(--secoundary-button);
   border: none;
   color: var(--color-light-2);
   font-weight: var(--font-weight-text2);
@@ -141,11 +141,11 @@ button {
   padding: 0;
 }
 .movie-btn::before{
-  content: '🤍';
+  content: '💜';
 }
 
 .movie-btn--liked::before{
-  content: '💜';
+  content: '🤍';
 }
 .movie-btn-id{
   position: absolute;
@@ -159,14 +159,13 @@ button {
   font-size: 20px;
 }
 .movie-btn-id::before{
-  content: '🤍';
+  content: '💜';
 }
 .movie-btn-id--liked::before{
-  content: '💜';
+  content: '🤍';
 }
 .icon-search:hover{
   color: white;
-  
 }
 .categoriesPreview-list, .categories-list {
   display: flex;
@@ -184,7 +183,7 @@ button {
 
 .header-container--long {
   /* background-image: url('https://pics.filmaffinity.com/Deadpool-777527803-large.jpg'); */
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 19.27%, rgba(0, 0, 0, 0) 29.17%), url(https://pics.filmaffinity.com/Deadpool-777527803-large.jpg);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 19.27%, rgba(0, 0, 0, 0) 29.17%), url(https://visioncanaria.com.uy/beneficios/?page=5);
   background-size: cover !important;
   height: 550px;
   position: fixed;

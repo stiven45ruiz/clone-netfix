@@ -80,7 +80,6 @@ const createMovies = (
     if (clean){
         container.innerHTML = ''
     }
-    
 
     movies.forEach(movie => {
         
@@ -344,7 +343,7 @@ const recommendedMoviesId = async(id) =>{
     const {data} = await api(`movie/${id}/recommendations`);
     const recommendedMovies = data.results;
 
-    createMovies(recommendedMovies, recommendedMoviesContainer)
+    createMovies(recommendedMovies, recommendedMoviesContainer, {clean: true, lazyLoad: false})
 }
 
 const getLikedMovies = () =>{

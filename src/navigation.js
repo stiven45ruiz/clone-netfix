@@ -138,7 +138,14 @@ function movieDetailsPage(){
 
     const [_, movieId] = location.hash.split('=')
 
-    
+    // likedMoviesList()[movie.id] && buttonLikedDetailMovie.classList.add('movie-btn--liked');
+
+    buttonLikedDetailMovie.addEventListener('click', () => {
+        console.log('holis')
+        buttonLikedDetailMovie.classList.toggle('movie-btn-id--liked')
+        
+        
+    });
     
     getMovieById(movieId);
 }
