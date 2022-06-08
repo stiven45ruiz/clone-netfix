@@ -137,6 +137,8 @@ function movieDetailsPage(){
     movieDetailSection.classList.remove('inactive')
 
     const [_, movieId] = location.hash.split('=')
+
+    
     
     getMovieById(movieId);
 }

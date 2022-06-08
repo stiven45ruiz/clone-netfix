@@ -32,3 +32,4 @@ const movieDetailTitle = document.querySelector('.movieDetail-title');
 const movieDetailDescription = document.querySelector('.movieDetail-description');
 const movieDetailPremiere = document.querySelector('.movieDetail-premiere');
 const movieDetailScore = document.querySelector('.movieDetail-score');
+const buttonLikedDetailMovie = document.querySelector('.movie-btn-id');

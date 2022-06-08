@@ -81,7 +81,6 @@ const createMovies = (
         container.innerHTML = ''
     }
     
-    
 
     movies.forEach(movie => {
         

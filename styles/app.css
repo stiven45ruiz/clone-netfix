@@ -6,7 +6,7 @@
   --color-light-1: #2f0d46ec; /* fallback for old browsers */
   --gradient-webkit: -webkit-linear-gradient(to bottom,  #03001ec0,#7403c0b9, #aa2988cc, #7403c0cb, #03001ec4);  /* Chrome 10-25, Safari 5.1-6 */
   --gradient-linear: linear-gradient(to bottom, #03001ea4, #7403c0b6, #aa2988bb, #7403c0be, #03001ec2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  --secoundary-button: #7403c0be;
 
 
   --color-light-2: #636B97;
@@ -145,6 +145,23 @@ button {
 }
 
 .movie-btn--liked::before{
+  content: '💜';
+}
+.movie-btn-id{
+  position: absolute;
+  top: -20px;
+  right: 20px;
+
+  background-color: var(--secoundary-button);
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  font-size: 20px;
+}
+.movie-btn-id::before{
+  content: '🤍';
+}
+.movie-btn-id--liked::before{
   content: '💜';
 }
 .icon-search:hover{
