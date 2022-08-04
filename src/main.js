@@ -1,3 +1,4 @@
+alert('Usame en Movile')
 //DATA
 const leng = window.navigator.language.split('-')[0]
 const api = axios.create({
